@@ -1,0 +1,6 @@
+/dist
+/electron
+/node_modules
+/release
+dist.rar
+dist.zip

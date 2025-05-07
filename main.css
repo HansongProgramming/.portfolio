@@ -1,0 +1,280 @@
+@font-face {
+  font-family: 'Plump Pixel';
+  src: url('fonts/PlumpPixel.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('fonts/Minecraft.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.overlay {
+  position: absolute;
+  top: 40vh;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+  color: white;
+  font-size: 24px;
+  /* pointer-events: none;  */
+}
+.PlayerStats{
+  max-width: 30%;
+  height: auto;
+}
+
+.likes{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  color: #555;
+  gap: fill;
+  justify-content: space-between;
+}
+
+.likes img{
+  max-width: 20px;
+  max-height: 20px;
+  height: auto;
+  margin: 0px 5px 5px 5px;
+}
+
+.likes span{
+  padding: 5px;
+}
+
+.likes div{
+  display: flex;
+  flex-direction: row;
+}
+
+p{
+  font-family: Minecraft;
+  letter-spacing: 2.5px;
+  text-shadow: -5px 2px 4px black;
+}
+
+.wasd, .arrows {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: left;
+  align-items: center;
+}
+
+.wasd img, .arrows img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.2s ease;
+}
+
+.wasd img:hover, .arrows img:hover{
+  transform: scale(1.5);
+}
+
+/* WASD layout */
+.wasd img:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+.wasd img:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.wasd img:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+.wasd img:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Arrows layout */
+.arrows img:nth-child(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+.arrows img:nth-child(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+.arrows img:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.arrows img:nth-child(4) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.interaction-prompt {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Minecraft;
+  font-size: 20px;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: none;
+  z-index: 2;
+}
+
+.laptop-overlay {
+  font-family: Minecraft;
+  letter-spacing: 2.5px;
+  position: absolute;
+  top: 10%;
+  left: 70%;
+  width: 50%;
+  height: 80%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding: 30px;
+  border: 2px solid white;
+  border-radius: 5px;
+  z-index: 3;
+  display: none;
+}
+
+.projects{
+  display: flex;
+  flex-direction: row;
+}
+
+.projects button{
+  width: 50px;
+  height: 50px;
+  font-family: Minecraft;
+  font-size: 30px;
+  color: aliceblue;
+  background-color: rgb(185, 106, 92);
+}
+
+.projects h1{
+  text-align: center;
+  width: 95%;
+}
+
+.projectList{
+  width: 100%;
+  height: 90%;
+  background-color: white;
+  overflow-y: scroll;
+  display: flex;
+  letter-spacing: 3px;
+  flex-direction: column;
+}
+
+.projectList h2, h3{
+  padding-left: 10px;
+  color: #000;
+}
+
+.post{
+  display: flex;
+  flex-direction: row;
+  letter-spacing: 3px;
+}
+
+.post img{
+  max-width: 80px;
+  max-height: 80px;
+  padding: 10px;
+  
+}
+
+hr{
+  width: 100%;
+}
+
+.overlay-screen {
+  font-family: Minecraft;
+  letter-spacing: 2.5px;
+  position: absolute;
+  top: 10%;
+  left: 70%;
+  width: 50%;
+  height: 80%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  padding: 30px;
+  border: 2px solid white;
+  border-radius: 5px;
+  z-index: 3;
+  display: none;
+  width: 30%;
+}
+
+
+/* Applies to all scrollbars in the document */
+::-webkit-scrollbar {
+  width: 6px;              /* vertical scrollbar width */
+  height: 6px;             /* horizontal scrollbar height */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;        /* color of the scroll thumb */
+  border-radius: 10px;     /* roundness of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;        /* darker on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* optional: hide the track */
+}
