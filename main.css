@@ -76,6 +76,7 @@ canvas {
   color: #555;
   gap: fill;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .likes img{
