@@ -2,5 +2,6 @@
 /electron
 /node_modules
 /release
+/images
 dist.rar
 dist.zip
