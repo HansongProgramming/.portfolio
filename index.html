@@ -23,7 +23,7 @@
       <h1> ANIMATIONS </h1>
       <button onclick="document.getElementById('cameraScreen').style.display='none'">x</button>
     </div>
-    <div id="posts-container"></div>
+    <div id="posts-container" class="posts-container"></div>
   </div>
 
   <div id="tvScreen" style="display: none;" class="overlay-screen">
@@ -165,6 +165,9 @@
     </div>
     <img src="images/PlayerStats.png" alt="Name" class="PlayerStats">
   </div>
+  <button id="mute-btn">Mute</button>
+  <audio id="bgm" src="bgm/bgm.mp3" autoplay loop></audio>
+
   <script type="module" src="./main.js"></script>
   <script src="contentHandler.js"></script>
 </body>

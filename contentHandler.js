@@ -34,6 +34,29 @@ document.addEventListener('DOMContentLoaded', function () {
       container.insertAdjacentHTML('beforeend', postHTML);
     });
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const bgm = document.getElementById("bgm");
+    const muteBtn = document.getElementById("mute-btn");
+    bgm.volume = 0.5;
+
+    let isMuted = false;
+  
+    muteBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      bgm.muted = isMuted;
+      muteBtn.textContent = isMuted ? "Unmute" : "Mute";
+    });
+  
+    document.body.addEventListener('click', () => {
+      if (bgm.paused) {
+        bgm.play().catch(err => {
+          console.warn("Autoplay blocked until user interaction", err);
+        });
+      }
+    }, { once: true });
+  });
+  
   
 
 function openLightbox(src) {
