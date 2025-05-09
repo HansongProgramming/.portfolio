@@ -161,7 +161,7 @@ scene.add(rightwall);
 setupCollidable(rightwall, false);
 
 const bgloader = new  GLTFLoader();
-bgloader.load('animations/background.glb', (gltf) => {
+bgloader.load('./animations/background.glb', (gltf) => {
   bg = gltf.scene;
   bg.traverse((child) => {
     if (child.isMesh) {
@@ -175,7 +175,7 @@ bgloader.load('animations/background.glb', (gltf) => {
 // 📝 Plant
 
 const plantLoader = new  GLTFLoader();
-plantLoader.load('animations/plants.glb', (gltf) => {
+plantLoader.load('./animations/plants.glb', (gltf) => {
   plant = gltf.scene;
   plant.traverse((child) => {
     if (child.isMesh) {
@@ -198,7 +198,7 @@ scene.add(invisibleBox);
 setupCollidable(invisibleBox, false);
 
 const laptoploader = new  GLTFLoader();
-laptoploader.load('animations/laptopTable.glb', (gltf) => {
+laptoploader.load('./animations/laptopTable.glb', (gltf) => {
   laptop = gltf.scene;
   laptop.position.set(-5.1,0,-2);
   laptop.traverse((child) => {
@@ -222,7 +222,7 @@ scene.add(camCollision);
 setupCollidable(camCollision, false);
 
 const camloader = new  GLTFLoader();
-camloader.load('animations/camTable.glb', (gltf) => {
+camloader.load('./animations/camTable.glb', (gltf) => {
   cam = gltf.scene;
   cam.position.set(3.5,0,-3)
   cam.traverse((child) => {
@@ -245,7 +245,7 @@ scene.add(chairCollision);
 setupCollidable(chairCollision, false);
 
 const chairloader = new  GLTFLoader();
-chairloader.load('animations/chair.glb', (gltf) => {
+chairloader.load('./animations/chair.glb', (gltf) => {
   chair = gltf.scene;
   chair.traverse((child) => {
     if (child.isMesh) {
@@ -257,7 +257,7 @@ chairloader.load('animations/chair.glb', (gltf) => {
 })
 
 const tvloader = new  GLTFLoader();
-tvloader.load('animations/tv.glb', (gltf) => {
+tvloader.load('./animations/tv.glb', (gltf) => {
   tv = gltf.scene;
   tv.position.set(-8, 6, 4)
   tv.traverse((child) => {
@@ -270,7 +270,7 @@ tvloader.load('animations/tv.glb', (gltf) => {
 })
 
 const tvstandloader = new  GLTFLoader();
-tvstandloader.load('animations/tvstand.glb', (gltf) => {
+tvstandloader.load('./animations/tvstand.glb', (gltf) => {
   tvstand = gltf.scene;
   tvstand.position.set(-7, 0, 5)
   tvstand.traverse((child) => {
@@ -286,7 +286,7 @@ tvstandloader.load('animations/tvstand.glb', (gltf) => {
 //📝 Lamp
 
 const hanglamploader = new GLTFLoader();
-hanglamploader.load('animations/lampHanging.glb', (gltf) => {
+hanglamploader.load('./animations/lampHanging.glb', (gltf) => {
   const originalLamp = gltf.scene;
 
   const basePosition = new THREE.Vector3(-8, 7.4, 8);
@@ -322,7 +322,7 @@ hanglamploader.load('animations/lampHanging.glb', (gltf) => {
 // 📝 Character
 
 const loader = new GLTFLoader();
-loader.load('animations/hans.glb', (gltf) => {
+loader.load('./animations/hans.glb', (gltf) => {
   model = gltf.scene;
 
   model.traverse((child) => {
@@ -335,7 +335,7 @@ loader.load('animations/hans.glb', (gltf) => {
 //📝  bot
 
 const roombaLoader = new GLTFLoader();
-roombaLoader.load('animations/bot.glb', (gltf) => {
+roombaLoader.load('./animations/bot.glb', (gltf) => {
 
   roomba = gltf.scene;
 

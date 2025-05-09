@@ -4,8 +4,11 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      external: [],
+    },
   },
-  rollupOptions: {
-    external: [], 
+  optimizeDeps: {
+    include: ['three']
   },
 });
