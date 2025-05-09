@@ -209,7 +209,7 @@ p{
   width: 95%;
 }
 
-#posts-container{
+.posts-container{
   width: 100%;
   height: 90%;
   background-color: white;
@@ -219,7 +219,7 @@ p{
   flex-direction: column;
 }
 
-#posts-container h2, h3{
+.posts-container h2, h3{
   padding-left: 10px;
   color: #000;
 }
@@ -261,21 +261,20 @@ hr{
 }
 
 
-/* Applies to all scrollbars in the document */
 ::-webkit-scrollbar {
-  width: 6px;              /* vertical scrollbar width */
-  height: 6px;             /* horizontal scrollbar height */
+  width: 6px;             
+  height: 6px;             
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;        /* color of the scroll thumb */
-  border-radius: 10px;     /* roundness of the scroll thumb */
+  background: #888;      
+  border-radius: 10px;    
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;        /* darker on hover */
+  background: #555;        
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* optional: hide the track */
+  background: transparent; 
 }
