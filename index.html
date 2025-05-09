@@ -168,13 +168,24 @@
       <img src="images/left.png" alt="">
       <img src="images/right.png" alt="">
     </div>
-    <img src="images/PlayerStats.png" alt="Name" class="PlayerStats">
+    <button id="mute-btn"><img src="" alt="">Mute</button>
   </div>
-  <button id="mute-btn">Mute</button>
   <audio id="bgm" src="bgm/bgm.mp3" autoplay loop></audio>
+  
+  <img src="images/PlayerStats.png" alt="Name" class="PlayerStats">
 
+  <script>
+    function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  </script>
   <script type="module" src="./main.js"></script>
-  <script src="contentHandler.js"></script>
+  <script type="module" src="./contentHandler.js"></script>
 </body>
 
 </html>

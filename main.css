@@ -62,9 +62,15 @@ canvas {
   padding: 30px;
   color: white;
   font-size: 24px;
+  display: flex;
+  flex-direction: column;
   /* pointer-events: none;  */
 }
 .PlayerStats{
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  z-index: 3;
   max-width: 30%;
   height: auto;
 }
@@ -287,4 +293,14 @@ hr{
 
 ::-webkit-scrollbar-track {
   background: transparent; 
+}
+
+button{
+  border-radius: 20px;
+  width: 5%;
+  height: 2%;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  border: 1px solid white;
 }
