@@ -209,7 +209,7 @@ p{
   width: 95%;
 }
 
-.projectList{
+#posts-container{
   width: 100%;
   height: 90%;
   background-color: white;
@@ -219,7 +219,7 @@ p{
   flex-direction: column;
 }
 
-.projectList h2, h3{
+#posts-container h2, h3{
   padding-left: 10px;
   color: #000;
 }
