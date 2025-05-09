@@ -219,6 +219,16 @@ p{
   flex-direction: column;
 }
 
+.projectList{
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0,0,0,0.8);
+  overflow-y: scroll;
+  display: flex;
+  letter-spacing: 3px;
+  flex-direction: column;
+}
+
 .posts-container h2, h3{
   padding-left: 10px;
   color: #000;

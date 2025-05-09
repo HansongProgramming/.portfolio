@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     const Artimages = [
-        'images/art.png', 'images/art2.png'
+        'images/art.png', 'images/art2.png',
+        'images/art3.png','images/art4.png',
+        'images/art5.png','images/art6.png',
+        'images/art7.png','images/art8.png',
+        'images/VIOLET.gif','images/art9.mp4',
+        'images/art10.mp4','images/art11.mp4'
     ];
 
     const ProjectImages =[
@@ -54,17 +59,32 @@ document.addEventListener('DOMContentLoaded', function () {
       const title = Arttitles[index];
       const postType = ArtName[index] || '';
   
+      let mediaElement;
+
+      if (img.endsWith(".mp4")) {
+        mediaElement = `
+          <video class="thumbnail" controls onclick="openLightbox(this.src)">
+            <source src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/${img}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        mediaElement = `
+          <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/${img}" alt="" class="thumbnail" onclick="openLightbox(this.src)">
+        `;
+      }
+      
       const postHTML = `
         <div class="post">
-          <img src="https://raw.githubusercontent.com/HansongProgramming/Portfolio/main/Portfolio/images/pfp.png" alt="">
+          <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/images/pfp.png" alt="">
           <span>
             <h2>${title} (${year})</h2>
             <h3>${postType}</h3>
           </span>
         </div>
-        <img src="${img}" alt="" class="thumbnail" onclick="openLightbox(this.src)">
+        ${mediaElement}
         <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-          <img src="${img}" alt="" id="lightbox-img">
+          <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/${img}" alt="" id="lightbox-img">
         </div>
         <div class="likes">
           <div><img src="https://img.icons8.com/?size=100&id=lFyaayFdhpED&format=png&color=000000" alt="like"><span>Like</span></div>
@@ -73,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <hr><br><br><br><br><br>
       `;
-  
+      
       ArtContainer.insertAdjacentHTML('beforeend', postHTML);
     });
 
@@ -84,15 +104,15 @@ document.addEventListener('DOMContentLoaded', function () {
     
         const postHTML = `
           <div class="post">
-            <img src="https://raw.githubusercontent.com/HansongProgramming/Portfolio/main/Portfolio/images/pfp.png" alt="">
+          <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/images/pfp.png" alt="">
             <span>
               <h2>${title} (${year})</h2>
               <h3>${postType}</h3>
             </span>
           </div>
-          <img src="${img}" alt="" class="thumbnail" onclick="openLightbox(this.src)">
+          <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/${img}" alt="" class="thumbnail" onclick="openLightbox(this.src)">
           <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-            <img src="${img}" alt="" id="lightbox-img">
+            <img src="https://raw.githubusercontent.com/HansongProgramming/.portfolio/main/${img}" alt="" id="lightbox-img">
           </div>
           <div class="likes">
             <div><img src="https://img.icons8.com/?size=100&id=lFyaayFdhpED&format=png&color=000000" alt="like"><span>Like</span></div>
