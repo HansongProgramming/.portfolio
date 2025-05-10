@@ -117,7 +117,7 @@ function setupCollidable(object, isPushable = false) {
 //! === 3D texts =====
 const textloader = new FontLoader();
 
-textloader.load('/fonts/Minecraft_Medium.json', function (font) {
+textloader.load('./fonts/Minecraft_Medium.json', function (font) {
   const textGeometry = new TextGeometry('[ F ]', {
     font: font,
     size: 0.2,             // Good size
@@ -200,33 +200,6 @@ scene.add(rightwall);
 
 setupCollidable(rightwall, false);
 
-const bgloader = new  GLTFLoader();
-bgloader.load('./animations/background.glb', (gltf) => {
-  bg = gltf.scene;
-  bg.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
-  scene.add(bg);
-})
-
-// 📝 Plant
-
-const plantLoader = new  GLTFLoader();
-plantLoader.load('./animations/plants.glb', (gltf) => {
-  plant = gltf.scene;
-  plant.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
-  scene.add(plant);
-})
-
-//📝 Laptop
 
 const invisibleBox = new THREE.Mesh(
   new THREE.BoxGeometry(1.6, 1.6, 1.6),
@@ -237,21 +210,6 @@ scene.add(invisibleBox);
 
 setupCollidable(invisibleBox, false);
 
-const laptoploader = new  GLTFLoader();
-laptoploader.load('./animations/laptopTable.glb', (gltf) => {
-  laptop = gltf.scene;
-  laptop.position.set(-5.1,0,-2);
-  laptop.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
-  scene.add(laptop);
-})
-
-// 📝Camera
-
 const camCollision = new THREE.Mesh(
   new THREE.BoxGeometry(2, 2, 2),
   new THREE.MeshBasicMaterial({ visible: false })
@@ -261,20 +219,6 @@ scene.add(camCollision);
 
 setupCollidable(camCollision, false);
 
-const camloader = new  GLTFLoader();
-camloader.load('./animations/camTable.glb', (gltf) => {
-  cam = gltf.scene;
-  cam.position.set(3.5,0,-3)
-  cam.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
-  scene.add(cam);
-})
-
-//📝  Chair
 const chairCollision = new THREE.Mesh(
   new THREE.BoxGeometry(5, 2, 2),
   new THREE.MeshBasicMaterial({ visible: false })
@@ -284,9 +228,73 @@ scene.add(chairCollision);
 
 setupCollidable(chairCollision, false);
 
-const chairloader = new  GLTFLoader();
-chairloader.load('./animations/chair.glb', (gltf) => {
-  chair = gltf.scene;
+const loader = new GLTFLoader();
+
+// 🪴 Plant
+loader.load('./animations/plants.glb', (gltf) => {
+  const plant = gltf.scene;
+  plant.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+  scene.add(plant);
+});
+
+// 💻 Laptop
+const invisibleBox = new THREE.Mesh(
+  new THREE.BoxGeometry(1.6, 1.6, 1.6),
+  new THREE.MeshBasicMaterial({ visible: false })
+);
+invisibleBox.position.set(-5.1, 0.5, -2);
+scene.add(invisibleBox);
+setupCollidable(invisibleBox, false);
+
+loader.load('./animations/laptopTable.glb', (gltf) => {
+  const laptop = gltf.scene;
+  laptop.position.set(-5.1, 0, -2);
+  laptop.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+  scene.add(laptop);
+});
+
+// 📷 Camera
+const camCollision = new THREE.Mesh(
+  new THREE.BoxGeometry(2, 2, 2),
+  new THREE.MeshBasicMaterial({ visible: false })
+);
+camCollision.position.set(3.5, 0, -4);
+scene.add(camCollision);
+setupCollidable(camCollision, false);
+
+loader.load('./animations/camTable.glb', (gltf) => {
+  const cam = gltf.scene;
+  cam.position.set(3.5, 0, -3);
+  cam.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+  scene.add(cam);
+});
+
+// 🪑 Chair
+const chairCollision = new THREE.Mesh(
+  new THREE.BoxGeometry(5, 2, 2),
+  new THREE.MeshBasicMaterial({ visible: false })
+);
+chairCollision.position.set(-1.5, 0, -5.5);
+scene.add(chairCollision);
+setupCollidable(chairCollision, false);
+
+loader.load('./animations/chair.glb', (gltf) => {
+  const chair = gltf.scene;
   chair.traverse((child) => {
     if (child.isMesh) {
       child.castShadow = true;
@@ -294,12 +302,12 @@ chairloader.load('./animations/chair.glb', (gltf) => {
     }
   });
   scene.add(chair);
-})
+});
 
-const tvloader = new  GLTFLoader();
-tvloader.load('./animations/tv.glb', (gltf) => {
-  tv = gltf.scene;
-  tv.position.set(-8, 6, 4)
+// 📺 TV
+loader.load('./animations/tv.glb', (gltf) => {
+  const tv = gltf.scene;
+  tv.position.set(-8, 6, 4);
   tv.traverse((child) => {
     if (child.isMesh) {
       child.castShadow = true;
@@ -307,12 +315,12 @@ tvloader.load('./animations/tv.glb', (gltf) => {
     }
   });
   scene.add(tv);
-})
+});
 
-const tvstandloader = new  GLTFLoader();
-tvstandloader.load('./animations/tvstand.glb', (gltf) => {
-  tvstand = gltf.scene;
-  tvstand.position.set(-7, 0, 5)
+// 🧍 TV Stand
+loader.load('./animations/tvstand.glb', (gltf) => {
+  const tvstand = gltf.scene;
+  tvstand.position.set(-7, 0, 5);
   tvstand.traverse((child) => {
     if (child.isMesh) {
       child.castShadow = true;
@@ -320,15 +328,11 @@ tvstandloader.load('./animations/tvstand.glb', (gltf) => {
     }
   });
   scene.add(tvstand);
-})
+});
 
-
-//📝 Lamp
-
-const hanglamploader = new GLTFLoader();
-hanglamploader.load('./animations/lampHanging.glb', (gltf) => {
+// 💡 Hanging Lamps
+loader.load('./animations/lampHanging.glb', (gltf) => {
   const originalLamp = gltf.scene;
-
   const basePosition = new THREE.Vector3(-8, 7.4, 8);
   originalLamp.position.copy(basePosition);
 
@@ -339,60 +343,35 @@ hanglamploader.load('./animations/lampHanging.glb', (gltf) => {
     }
   });
 
-  const rows = 3;      
-  const columns = 2;   
-  const spacingX = 13.5;  
-  const spacingY = 8;  
+  const rows = 3;
+  const columns = 2;
+  const spacingX = 13.5;
+  const spacingY = 8;
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < columns; col++) {
       const lampClone = originalLamp.clone(true);
-
       lampClone.position.set(
-        basePosition.x + col * spacingX,      
-        basePosition.y ,      
-        basePosition.z - row * spacingY                     
+        basePosition.x + col * spacingX,
+        basePosition.y,
+        basePosition.z - row * spacingY
       );
-
       scene.add(lampClone);
     }
   }
 });
 
-// 📝 Character
-
-const loader = new GLTFLoader();
+// 🧍‍♂️ Character
 loader.load('./animations/hans.glb', (gltf) => {
-  model = gltf.scene;
-
+  model = gltf.scene;  
+  model.position.set(-2, 0, 0);
+  model.scale.set(1, 1, 1);
   model.traverse((child) => {
     if (child.isMesh) {
       child.castShadow = true;
       child.receiveShadow = true;
     }
   });
-
-//📝  bot
-
-const roombaLoader = new GLTFLoader();
-roombaLoader.load('./animations/bot.glb', (gltf) => {
-
-  roomba = gltf.scene;
-
-  roomba.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-    scene.add(roomba);
-
-  });
-})
-
-  
-// ! overlay div
-  model.position.set(-2, 0, 0);
-  model.scale.set(1, 1, 1);
   scene.add(model);
 
   mixer = new THREE.AnimationMixer(model);
@@ -409,7 +388,6 @@ roombaLoader.load('./animations/bot.glb', (gltf) => {
   } else {
     console.warn("No 'idle' animation found.");
   }
-  
 }, undefined, error => {
   console.error("Error loading model:", error);
 });

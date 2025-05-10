@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Plump Pixel';
-  src: url('fonts/PlumpPixel.ttf') format('truetype');
+  src: url('./public/fonts/PlumpPixel.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Minecraft';
-  src: url('fonts/Minecraft.ttf') format('truetype');
+  src: url('./public/fonts/Minecraft.ttf') format('truetype');
 }
 
 * {
