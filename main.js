@@ -210,25 +210,19 @@ scene.add(invisibleBox);
 
 setupCollidable(invisibleBox, false);
 
-const camCollision = new THREE.Mesh(
-  new THREE.BoxGeometry(2, 2, 2),
-  new THREE.MeshBasicMaterial({ visible: false })
-);
-camCollision.position.set(3.5, 0, -4);
-scene.add(camCollision);
-
-setupCollidable(camCollision, false);
-
-const chairCollision = new THREE.Mesh(
-  new THREE.BoxGeometry(5, 2, 2),
-  new THREE.MeshBasicMaterial({ visible: false })
-);
-chairCollision.position.set(-1.5, 0, -5.5);
-scene.add(chairCollision);
-
-setupCollidable(chairCollision, false);
-
 const loader = new GLTFLoader();
+
+// Background
+loader.load('./animations/background.glb', (gltf) => {
+  const background = gltf.scene;
+  background.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+  scene.add(background);
+});
 
 // 🪴 Plant
 loader.load('./animations/plants.glb', (gltf) => {
@@ -243,16 +237,16 @@ loader.load('./animations/plants.glb', (gltf) => {
 });
 
 // 💻 Laptop
-const invisibleBox = new THREE.Mesh(
+const invisibleBox1 = new THREE.Mesh(
   new THREE.BoxGeometry(1.6, 1.6, 1.6),
   new THREE.MeshBasicMaterial({ visible: false })
 );
-invisibleBox.position.set(-5.1, 0.5, -2);
-scene.add(invisibleBox);
-setupCollidable(invisibleBox, false);
+invisibleBox1.position.set(-5.1, 0.5, -2);
+scene.add(invisibleBox1);
+setupCollidable(invisibleBox1, false);
 
 loader.load('./animations/laptopTable.glb', (gltf) => {
-  const laptop = gltf.scene;
+  laptop = gltf.scene;
   laptop.position.set(-5.1, 0, -2);
   laptop.traverse((child) => {
     if (child.isMesh) {
@@ -273,7 +267,7 @@ scene.add(camCollision);
 setupCollidable(camCollision, false);
 
 loader.load('./animations/camTable.glb', (gltf) => {
-  const cam = gltf.scene;
+  cam = gltf.scene;
   cam.position.set(3.5, 0, -3);
   cam.traverse((child) => {
     if (child.isMesh) {
@@ -319,7 +313,7 @@ loader.load('./animations/tv.glb', (gltf) => {
 
 // 🧍 TV Stand
 loader.load('./animations/tvstand.glb', (gltf) => {
-  const tvstand = gltf.scene;
+  tvstand = gltf.scene;
   tvstand.position.set(-7, 0, 5);
   tvstand.traverse((child) => {
     if (child.isMesh) {
