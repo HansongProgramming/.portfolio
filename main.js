@@ -6,6 +6,9 @@ import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { Box3Helper } from 'three';
 import { mod } from 'three/src/nodes/TSL.js';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+
 
 //📝 === Scene Setup ===
 const scene = new THREE.Scene();
@@ -15,7 +18,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
-const promptDiv = document.getElementById('interactionPrompt');
 const overlayDiv = document.getElementById('laptopOverlay');
 const overlayDiv2 = document.getElementById('cameraScreen');
 const overlayDiv3 = document.getElementById('tvScreen');
@@ -111,6 +113,44 @@ function setupCollidable(object, isPushable = false) {
     collidables.push(object);
   }
 }
+
+//! === 3D texts =====
+const textloader = new FontLoader();
+
+textloader.load('/fonts/Minecraft_Medium.json', function (font) {
+  const textGeometry = new TextGeometry('[ F ]', {
+    font: font,
+    size: 0.2,             // Good size
+    height: 0.02,          // Increased to avoid being paper-thin
+    curveSegments: 2,      // Minecraft-style fonts are pixelated, so high detail isn’t needed
+    bevelEnabled: true,
+    bevelThickness: 0.005,
+    bevelSize: 0.005,
+    bevelOffset: 0,
+    bevelSegments: 1       
+  });
+
+  textGeometry.computeBoundingBox();
+  textGeometry.center();
+
+  const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+  const textMesh2 = new THREE.Mesh(textGeometry, textMaterial);
+  const textMesh3 = new THREE.Mesh(textGeometry, textMaterial);
+
+  textMesh.scale.set(1.5, 1.5, 0);
+  textMesh2.scale.set(1.5, 1.5, 0); 
+  textMesh3.scale.set(1.5, 1.5, 0); 
+
+  textMesh.position.set(3.8, 3, -4.5);
+  textMesh2.position.set(-5, 3, -2);
+  textMesh3.position.set(-7, 2.5, 4);
+
+  scene.add(textMesh);
+  scene.add(textMesh2);
+  scene.add(textMesh3);
+});
+
 
 
 // ! === Load GLTF Model ===
@@ -385,7 +425,7 @@ const keys = {};
 document.addEventListener('keydown', e => keys[e.key.toLowerCase()] = true);
 document.addEventListener('keyup', e => keys[e.key.toLowerCase()] = false);
 document.addEventListener('keydown', e => {
-  if (e.code === 'Space' && isNear(model, laptop)) {
+  if (e.code === 'KeyF' && isNear(model, laptop)) {
     e.preventDefault();
     overlayDiv.style.display = 'block';
     cameraFollow = false;
@@ -399,7 +439,7 @@ document.addEventListener('keydown', e => {
       if (progress < 1) { progress += 0.02; requestAnimationFrame(update); }
     };
     update();
-  } else if (e.code === 'Space' && isNear(model, cam)) {
+  } else if (e.code === 'KeyF' && isNear(model, cam)) {
     e.preventDefault();
     overlayDiv2.style.display = 'block';
     cameraFollow = false;
@@ -413,7 +453,7 @@ document.addEventListener('keydown', e => {
       if (progress < 1) { progress += 0.02; requestAnimationFrame(update); }
     };
     update();
-  } else if (e.code === 'Space' && isNear(model, tvstand)) {
+  } else if (e.code === 'KeyF' && isNear(model, tvstand)) {
     e.preventDefault();
     overlayDiv3.style.display = 'block';
     cameraFollow = false;
@@ -548,9 +588,7 @@ function animate() {
     }
   
     if (isNear(model, laptop) || isNear(model, cam) || isNear(model, tvstand)) {
-      promptDiv.style.display = 'block';
     } else {
-      promptDiv.style.display = 'none';
       overlayDiv.style.display = 'none';
       overlayDiv2.style.display = 'none';
       overlayDiv3.style.display = 'none';

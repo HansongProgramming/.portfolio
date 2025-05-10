@@ -16,7 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
         'images/onehanki.gif',
         'images/AiCore.gif'];
 
-    const Artyears = [2022, 2023];
+    const Artyears = [
+        2022, 2022,
+        2022, 2022,
+        2022, 2022,
+        2023, 2023,
+        2023, 2024,
+        2024, 2024];
 
     const Projyears = [
         2022,
@@ -29,8 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
       ];
       
     const Arttitles = [
-        'Artist', 
-        'Designer'
+        'Artist', 'Artist',
+        'Artist','Artist',
+        'Artist','Artist',
+        'Artist','Artist',
+        'Animator','Animator',
+        'Animator','Animator'
     ];
     const Projtitles = [
         'Developer',
@@ -49,7 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
         'Split Keyboard | Personal Project',
         'AiCore | Capstone'
       ];
-    const ArtName = ['Illustration | Personal Project', 'Logo Design | Client Work'];
+
+    const ArtName = [
+      'Illustration | Personal Project', 'Illustration | Personal Project',
+      'Illustration | Personal Project', 'Illustration | Personal Project',
+      'Illustration | Personal Project', 'Illustration | Personal Project',
+      'Illustration | Personal Project', 'Animation | Personal Project',
+      'Animation | Personal Project', 'Animation | Personal Project',
+      'Animation | Personal Project'];
   
     const ArtContainer = document.getElementById('art');
     const ProjectContainer = document.getElementById('programming');
