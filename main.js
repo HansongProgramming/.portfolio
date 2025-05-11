@@ -355,6 +355,19 @@ loader.load('./animations/lampHanging.glb', (gltf) => {
   }
 });
 
+// Roomba
+loader.load('./animations/bot.glb', (gltf) => {
+  roomba = gltf.scene;
+  roomba.position.set(-7, 0, 5);
+  roomba.traverse((child) => {
+    if (child.isMesh) {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+  scene.add(roomba);
+});
+
 // 🧍‍♂️ Character
 loader.load('./animations/hans.glb', (gltf) => {
   model = gltf.scene;  
@@ -483,6 +496,7 @@ function handleMovement(delta) {
     const newPos = model.position.clone().add(move);
 
     const modelBox = new THREE.Box3().setFromObject(model).translate(move);
+    const roombaBox = new THREE.Box3().setFromObject(roomba).translate(move);
 
     let collided = false;
 
@@ -499,7 +513,7 @@ function handleMovement(delta) {
 
       for (const obj of pushables) {
         const box = boundingBoxes.get(obj);
-        if (box && modelBox.intersectsBox(box)) {
+        if (box && modelBox.intersectsBox(box)) {+
           obj.position.add(move);
 
           const updatedBox = new THREE.Box3().setFromObject(obj);
